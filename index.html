@@ -3,94 +3,123 @@
 <head>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moja kaviareň</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaviareň u Filipa</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      background-color: #faf7f2;
+      color: #333;
     }
+
     header {
-      background-color: #6f4e37;
+      background-color: #8b5e3c;
       color: white;
-      padding: 10px 20px;
+      padding: 1rem;
       text-align: center;
     }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
     nav a {
       color: white;
-      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
-    section {
-      background-color: white;
-      padding: 20px;
-      margin-top: 20px;
+
+    main {
+      padding: 2rem;
+    }
+
+    .blok {
+      background-color: #f3e6d5; /* jemne hnedá */
+      padding: 1.5rem;
+      margin-bottom: 2rem;
       border-radius: 8px;
     }
-    button {
-      background-color: #6f4e37;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
+
+    h2 {
+      color: #6b4c2d;
     }
-    button:hover {
-      background-color: #52392d;
+
+    footer {
+      background-color: #8b5e3c;
+      color: white;
+      text-align: center;
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
-<script src="script.js"></script>
   <header>
-    <h1>Moja kaviareň</h1>
+    <h1>Kaviareň u Filipa</h1>
     <nav>
-      <a href="#menu" id="link-menu">Menu</a>
-      <a href="#kontakt" id="link-kontakt">Kontakt</a>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
     </nav>
   </header>
 
-  <section id="menu">
-    <h2>Naše menu</h2>
-    <ul>
-      <li>Káva Espresso</li>
-      <li>Káva Latte</li>
-      <li>Koláče</li>
-    </ul>
-  </section>
+  <main>
+    <section id="menu" class="blok">
+      <h2>Naše menu</h2>
 
-  <section id="kontakt">
-    <h2>Kontaktujte nás</h2>
-    <p>Email: info@kaviaren.sk</p>
-    <p>Telefón: +421 900 123 456</p>
-    <button id="kontakt-btn">Napíš nám</button>
-  </section>
+      <h3>Kávy</h3>
+      <ul>
+        <li>Espresso – 1.50€</li>
+        <li>Cappuccino – 2.00€</li>
+        <li>Latte – 2.50€</li>
+        <li>Flat White – 2.80€</li>
+        <li>Americano – 1.80€</li>
+        <li>Ľadová káva – 3.00€</li>
+      </ul>
+
+      <h3>Koláče</h3>
+      <ul>
+        <li>Cheesecake – 2.50€</li>
+        <li>Makový závin – 2.00€</li>
+        <li>Jablkový koláč – 2.20€</li>
+      </ul>
+    </section>
+
+    <section id="kontakt" class="blok">
+      <h2>Kontakt</h2>
+      <p>Adresa: Hlavná 123, Prešov</p>
+      <p>Telefón: +421 912 345 678</p>
+      <p>Email: info@kaviarenfilip.sk</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Kaviareň u Filipa</p>
+  </footer>
 
   <script>
-    // Scrollovanie na sekciu po kliknutí na menu
-    document.getElementById('link-menu').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    document.getElementById('link-kontakt').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // Príklad jednoduchého JavaScriptu - kliknutie na tlačidlo Kontakt
-    document.getElementById('kontakt-btn').addEventListener('click', function() {
-      alert('Ďakujeme, že nás chcete kontaktovať! Odpovieme čoskoro.');
+    // Jednoduchý JS pre smooth scroll (voliteľné)
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const cieľ = document.querySelector(this.getAttribute('href'));
+        if (cieľ) {
+          cieľ.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     });
   </script>
-  
+  <script src="script.js"></script>
 </body>
 </html>
