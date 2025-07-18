@@ -1,126 +1,119 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kaviareň u Filipa</title>
+  <meta charset="UTF-8">
+  <title>Kaviareň Espresso</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #faf7f2;
-      color: #333;
+      background-color: #fff8f0;
+      color: #3e2f1c;
+      padding: 20px;
     }
 
     header {
-      background-color: #8b5e3c;
-      color: white;
-      padding: 1rem;
+      background-color: #d9b382;
+      padding: 20px;
+      border-radius: 10px;
       text-align: center;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0.5rem 0 0 0;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
     }
 
     nav a {
-      color: white;
+      color: #3e2f1c;
       text-decoration: none;
+      margin: 0 10px;
       font-weight: bold;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    section {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #f7e6d5;
+      border-radius: 10px;
     }
 
-    main {
-      padding: 2rem;
+    .nav-link {
+      color: black;
+      text-decoration: none;
+      padding: 5px 10px;
     }
 
-    .blok {
-      background-color: #f3e6d5; /* jemne hnedá */
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-    }
-
-    h2 {
-      color: #6b4c2d;
-    }
-
-    footer {
-      background-color: #8b5e3c;
+    .nav-link.active {
       color: white;
-      text-align: center;
-      padding: 1rem;
+      background-color: #007BFF;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Kaviareň u Filipa</h1>
+    <h1>Vitajte v Kaviarni Espresso</h1>
     <nav>
       <ul>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
       </ul>
     </nav>
   </header>
+  
+  <section id="menu">
+    <h2>Naše Menu</h2>
+    
+    <h3>Kávy</h3>
+    <ul>
+      <li>Espresso – 1.50€</li>
+      <li>Cappuccino – 2.00€</li>
+      <li>Latte – 2.50€</li>
+      <li>Flat White – 2.80€</li>
+      <li>Americano – 1.80€</li>
+      <li>Ľadová káva – 3.00€</li>
+    </ul>
+    
+    <h3>Koláče</h3>
+    <ul>
+      <li>Cheesecake – 2.50€</li>
+      <li>Makový závin – 2.00€</li>
+      <li>Jablkový koláč – 2.20€</li>
+    </ul>
+  </section>
+  
+  <section id="kontakt">
+    <h2>Kontaktujte nás</h2>
+    <form id="kontaktForm">
+      <label for="meno">Meno:</label><br>
+      <input type="text" id="meno" name="meno" required><br><br>
 
-  <main>
-    <section id="menu" class="blok">
-      <h2>Naše menu</h2>
+      <label for="sprava">Správa:</label><br>
+      <textarea id="sprava" name="sprava" rows="4" required></textarea><br><br>
 
-      <h3>Kávy</h3>
-      <ul>
-        <li>Espresso – 1.50€</li>
-        <li>Cappuccino – 2.00€</li>
-        <li>Latte – 2.50€</li>
-        <li>Flat White – 2.80€</li>
-        <li>Americano – 1.80€</li>
-        <li>Ľadová káva – 3.00€</li>
-      </ul>
-
-      <h3>Koláče</h3>
-      <ul>
-        <li>Cheesecake – 2.50€</li>
-        <li>Makový závin – 2.00€</li>
-        <li>Jablkový koláč – 2.20€</li>
-      </ul>
-    </section>
-
-    <section id="kontakt" class="blok">
-      <h2>Kontakt</h2>
-      <p>Adresa: Hlavná 123, Prešov</p>
-      <p>Telefón: +421 912 345 678</p>
-      <p>Email: info@kaviarenfilip.sk</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Kaviareň u Filipa</p>
-  </footer>
+      <button type="submit">Odoslať</button>
+    </form>
+    <p>Adresa: Hlavná 123, Prešov</p>
+    <p>Email: info@espresso.sk</p>
+  </section>
 
   <script>
-    // Jednoduchý JS pre smooth scroll (voliteľné)
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const cieľ = document.querySelector(this.getAttribute('href'));
-        if (cieľ) {
-          cieľ.scrollIntoView({ behavior: 'smooth' });
-        }
+    // Zvýraznenie aktívnej položky v menu
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+      link.addEventListener('click', function(event) {
+        links.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
       });
     });
+
+    // Spracovanie formulára na stránke Kontakt
+    document.getElementById('kontaktForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const meno = document.getElementById('meno').value;
+      const sprava = document.getElementById('sprava').value;
+
+      alert(`Ďakujeme, ${meno}! Tvoja správa bola odoslaná.`);
+      this.reset();
+    });
   </script>
-  <script src="script.js"></script>
-  
 </body>
 </html>
+
